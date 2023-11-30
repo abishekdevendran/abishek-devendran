@@ -17,7 +17,7 @@
 	<meta property="og:description" content={data.metaData.description} />
 	<meta property="og:type" content="article" />
 </svelte:head>
-<main class="max-w-3xl mx-auto px-2">
+<main class="max-w-3xl mx-auto px-2 pb-6">
 	<div class="w-full flex items-center justify-center pb-16 pt-4 flex-col gap-4" id="title">
 		<img
 			src={data.metaData.coverImage ?? '/0.jpg'}

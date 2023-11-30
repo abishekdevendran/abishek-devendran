@@ -9,7 +9,7 @@
 	};
 </script>
 
-<a href={`/${post.slug}`}>
+<a href={`/blog/${post.slug}`}>
 	<Card.Root class="w-96 hover:border-white transition-all duration-100 transform-gpu">
 		<Card.Content class="p-2">
 			<img

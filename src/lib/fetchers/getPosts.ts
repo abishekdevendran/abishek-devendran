@@ -32,9 +32,13 @@ export default async function getPosts(tags?: string[]) {
 		posts = posts.filter((post) => post.tags?.some((tag) => tags.includes(tag)));
 	}
 	posts.sort(
-		(a, b) =>
-			new Date(b.updatedAt ?? b.publishedAt).getTime() -
-			new Date(a.updatedAt ?? a.publishedAt).getTime()
+		(a, b) =>{
+			let aDateArr = a.updatedAt ? a.updatedAt.split('/') : a.publishedAt.split('/');
+			let bDateArr = b.updatedAt ? b.updatedAt.split('/') : b.publishedAt.split('/');
+			let aDate = new Date(`${aDateArr[2]}-${aDateArr[1]}-${aDateArr[0]}`);
+			let bDate = new Date(`${bDateArr[2]}-${bDateArr[1]}-${bDateArr[0]}`);
+			return bDate.getTime() - aDate.getTime();
+		}
 	);
 	return posts;
 }
