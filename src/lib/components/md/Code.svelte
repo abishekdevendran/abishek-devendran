@@ -32,10 +32,16 @@
 	{@html htmlImport}
 </svelte:head>
 	<div
-		class="w-full flex items-center justify-between text-center capitalize rounded-t-xl p-2 dark:bg-primary bg-secondary mt-4 pl-4"
+		class="w-full flex items-center justify-between text-center capitalize rounded-t-md p-1 dark:bg-primary bg-secondary mt-4 pl-4"
 	>
 		<p>
-			{lang}
+			{#if lang==='ts'}
+				TypeScript
+			{:else if lang==='js'}
+				Javascript
+			{:else}
+				{lang}
+			{/if}
 		</p>
 		<Button class="cursor-pointer rounded-lg p-2" on:click={copyToClipboard} variant="ghost" size="icon">
 			<Copy />

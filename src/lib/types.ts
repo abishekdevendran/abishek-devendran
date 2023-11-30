@@ -7,4 +7,5 @@ export type Post = {
   tags: string[];
   description?: string;
   author: string;
+  coverImage?: string;
 }

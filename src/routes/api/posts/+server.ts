@@ -1,19 +1,22 @@
 import type { Post } from '$lib/types';
 import { json } from '@sveltejs/kit';
 
-async function getPosts() {
+async function getPosts(
+	tags?: string[],
+) {
 	let posts: (Post & {
 		slug: string;
 	})[] = [];
 	const paths = import.meta.glob('/src/posts/*.md', {
-		eager: true
+		eager: true,
+		as: 'raw'
 	});
 	for (const path in paths) {
 		const file: any = paths[path];
-		// console.log(file.default.render());
+		// console.log(file);
 		// parse frontmatter for metadata
 		let metaData = {} as Post;
-		let block = file.default.render().html.split('---')[1].trim().split('\n');
+		let block = file.split('---')[1].trim().split('\n');
 		for (const line of block) {
 			const [key, value]: [keyof Post, string] = line.split(':');
 			if (key === 'tags') {
@@ -28,6 +31,9 @@ async function getPosts() {
 		let author = metaData.author ?? 'Abishek Devendran';
 		metaData.published && posts.push({ slug, ...metaData, author });
 	}
+	if(tags) {
+		posts = posts.filter(post => post.tags?.some(tag => tags.includes(tag)));
+	}
 	posts.sort(
 		(a, b) =>
 			new Date(b.updatedAt ?? b.publishedAt).getTime() -
@@ -36,7 +42,10 @@ async function getPosts() {
 	return posts;
 }
 
-export async function GET() {
-	const posts = await getPosts();
+export async function GET({
+	url
+}) {
+	console.log(url.searchParams.getAll('tag'));
+	const posts = await getPosts(url.searchParams.getAll('tag'));
 	return json(posts);
 }

@@ -1,7 +1,11 @@
 <script lang="ts">
+	import BlogCard from '$lib/components/BlogCard.svelte';
+
 	export let data;
 </script>
 
-<pre>
-  {JSON.stringify(data.posts, null, 2)}
-</pre>
+<div class="flex items-center justify-center gap-4">
+	{#each data.posts as post}
+		<BlogCard {post} />
+	{/each}
+</div>

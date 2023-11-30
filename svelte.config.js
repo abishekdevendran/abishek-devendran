@@ -7,7 +7,7 @@ import shiki from 'shiki';
 const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
-	extensions: ['.svelte', '.md'],
+	extensions: ['.svelte'],
 	preprocess: [
 		vitePreprocess({}),
 		// mdsvex({

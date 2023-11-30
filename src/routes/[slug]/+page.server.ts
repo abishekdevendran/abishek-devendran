@@ -4,7 +4,7 @@ import { error } from '@sveltejs/kit';
 export const load = async ({ params }) => {
 	try {
 		const mdFile = await import(`../../posts/${params.slug}.md?raw`);
-		let metaData = {} as Omit<Post, 'slug'>;
+		let metaData = {} as Post;
 		let block = mdFile.default.split('---')[1].trim().split('\n');
 		for (const line of block) {
 			const [key, value]: [keyof Post, string] = line.split(':');

@@ -4,8 +4,7 @@
 	import { Toaster } from 'svelte-sonner'
 	import { fly } from 'svelte/transition'
 	import '../app.pcss';
-
-	export const prerender = true;
+	
 	export let data;
 </script>
 
