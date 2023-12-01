@@ -11,7 +11,7 @@
 	import { toast } from 'svelte-sonner';
 
 	export let data;
-	$title = data.metaData.title;
+	$title = data.metaData.title+' | Blog ';
 
 	const shareFunction = async () => {
 		if (navigator.share) {

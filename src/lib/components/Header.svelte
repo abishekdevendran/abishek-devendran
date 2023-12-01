@@ -2,6 +2,8 @@
 	import MobileDropdown from '$lib/components/Mobile-Dropdown.svelte';
 	import ThemeSwitcher from '$lib/components/Theme-Switcher.svelte';
 	import { title } from '$lib/stores/title';
+	import { page } from '$app/stores';
+
 	$: computedTitle =
 		title && $title !== 'Home' ? `${$title} | Abishek Devendran` : 'Abishek Devendran';
 </script>
@@ -19,9 +21,11 @@
 			<img src="/SignatureBrand.png" alt="Abishek Devendran" class="h-full w-auto dark:invert" />
 		</a>
 		<div class="flex items-center justify-center gap-2 md:gap-6">
-			<a href="/blog" class="max-md:hidden">Blog</a>
-			<a href="/projects" class="max-md:hidden">Projects</a>
-			<a href="/about" class="max-md:hidden">About</a>
+			<a href="/blog" class={`max-md:hidden ${$page.url.pathname === '/blog' ? 'underline' : ''}`}
+				>Blog</a
+			>
+			<a href="/projects"  class={`max-md:hidden ${$page.url.pathname === '/projects' ? 'underline' : ''}`}>Projects</a>
+			<a href="/about"  class={`max-md:hidden ${$page.url.pathname === '/about' ? 'underline' : ''}`}>About</a>
 			<ThemeSwitcher />
 			<MobileDropdown />
 		</div>
