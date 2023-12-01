@@ -1,14 +1,42 @@
 <script lang="ts">
 	import { title } from '$lib/stores/title';
-	import { Hash } from 'lucide-svelte';
+	import { Hash, MessagesSquare, Share, Share2 } from 'lucide-svelte';
 	import SvelteMarkdown from 'svelte-markdown';
 	import ImageComponent from '$lib/components/md/Img.svelte';
 	import HeadingComponent from '$lib/components/md/Heading.svelte';
 	import CodeComponent from '$lib/components/md/Code.svelte';
 	import { parseDate } from '$lib/dateParser';
+	import Button from '$lib/components/ui/button/button.svelte';
+	import * as Tooltip from '$lib/components/ui/tooltip';
+	import { toast } from 'svelte-sonner';
 
 	export let data;
 	$title = data.metaData.title;
+
+	const shareFunction = async () => {
+		if (navigator.share) {
+			try {
+				await navigator.share({
+					title: data.metaData.title,
+					text: data.metaData.description,
+					url: window.location.href
+				});
+			} catch (err) {
+				console.log(err);
+				toast.error('Failed to share');
+			}
+		} else if (navigator.clipboard) {
+			try {
+				await navigator.clipboard.writeText(window.location.href);
+				toast.success('Link copied to clipboard');
+			} catch (err) {
+				console.log(err);
+				toast.error('Failed to copy link to clipboard');
+			}
+		} else {
+			toast.error('Your browser does not support sharing');
+		}
+	};
 </script>
 
 <svelte:head>
@@ -49,10 +77,64 @@
 			{/each}
 		</div>
 	</div>
-	<div class="w-full markdown-holder">
+	<div class="w-full markdown-holder pb-6">
 		<SvelteMarkdown
 			source={data.content}
 			renderers={{ image: ImageComponent, heading: HeadingComponent, code: CodeComponent }}
 		/>
+	</div>
+	<div
+		class="mx-auto mb-6 flex items-center justify-center gap-4 sticky bottom-8 rounded-full p-2 bg-background border z-10 max-w-fit"
+	>
+		<Tooltip.Root>
+			<Tooltip.Trigger asChild let:builder>
+				<Button
+					builders={[builder]}
+					class="rounded-full p-0 aspect-square"
+					variant="outline"
+					on:click={shareFunction}
+				>
+					<Share2 class="h-4 w-4" />
+				</Button>
+			</Tooltip.Trigger>
+			<Tooltip.Content>
+				<p>Share</p>
+			</Tooltip.Content>
+		</Tooltip.Root>
+		<Tooltip.Root>
+			<Tooltip.Trigger asChild let:builder>
+				<Button
+					builders={[builder]}
+					class="rounded-full p-0 aspect-square"
+					variant="outline"
+					href="#comments"
+				>
+					<MessagesSquare class="h-4 w-4" />
+				</Button>
+			</Tooltip.Trigger>
+			<Tooltip.Content>
+				<p>Comments</p>
+			</Tooltip.Content>
+		</Tooltip.Root>
+	</div>
+	<div class="comments" id="comments">
+		<script
+		src="https://giscus.app/client.js"
+		data-repo="abishekdevendran/abishek-devendran"
+		data-repo-id="R_kgDOKzqRKw"
+		data-category="Announcements"
+		data-category-id="DIC_kwDOKzqRK84CbbFO"
+		data-mapping="pathname"
+		data-strict="0"
+		data-reactions-enabled="1"
+		data-emit-metadata="1"
+		data-input-position="top"
+		data-theme="preferred_color_scheme"
+		data-lang="en"
+		data-loading="lazy"
+		crossorigin="anonymous"
+		async
+		>
+	</script>
 	</div>
 </main>
