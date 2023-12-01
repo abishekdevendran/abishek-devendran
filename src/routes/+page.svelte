@@ -4,7 +4,7 @@
 	export let data;
 </script>
 
-<div class="flex items-center justify-center gap-4">
+<div class="flex flex-col items-center justify-center gap-4 md:pt-16 pb-6">
 	<Hero />
 	<BlogCard post={data.posts[0]} />
 </div>
