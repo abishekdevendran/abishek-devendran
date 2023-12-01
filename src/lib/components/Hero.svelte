@@ -27,8 +27,7 @@
 				<span class="leading-7"> Twitter </span>
 			</Button>
 			<Button
-				href="
-			https://www.linkedin.com/in/abishekdevendran/"
+				href="https://www.linkedin.com/in/abishekdevendran/"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="md:w-1/4 flex items-center justify-center gap-2 text-center"
