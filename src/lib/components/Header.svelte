@@ -12,7 +12,7 @@
 	</title>
 </svelte:head>
 <header
-	class="supports-[backdrop-filter]:bg-background/60 fixed bottom-0 md:top-0 z-50 w-full border-b bg-background/95 shadow-sm backdrop-blur h-16 py-1"
+	class="supports-[backdrop-filter]:bg-background/60 fixed bottom-0 md:top-0 z-10 w-full border-b bg-background/95 shadow-sm backdrop-blur h-16 py-1"
 >
 	<div class="md:container flex h-14 items-center justify-between max-md:px-2">
 		<a href="/" class="h-full w-auto">

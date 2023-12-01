@@ -84,7 +84,7 @@
 		/>
 	</div>
 	<div
-		class="mx-auto mb-6 flex items-center justify-center gap-4 sticky bottom-8 rounded-full p-2 bg-background border z-10 max-w-fit"
+		class="mx-auto mb-6 flex items-center justify-center gap-4 sticky bottom-1 rounded-full p-2 bg-background border z-20 max-w-fit supports-[backdrop-filter]:bg-background/60"
 	>
 		<Tooltip.Root>
 			<Tooltip.Trigger asChild let:builder>
