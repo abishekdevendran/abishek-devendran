@@ -1,0 +1,1 @@
+<p class="text-justify"><slot></slot></p>

@@ -6,5 +6,7 @@
 
 <div class="flex flex-col items-center justify-center gap-4 md:pt-16 pb-6">
 	<Hero />
-	<BlogCard post={data.posts[0]} />
+	<div class="w-full flex flex-col items-stretch justify-center md:flex-row gap-4">
+		<BlogCard posts={data.posts.slice(0, 3)} />
+	</div>
 </div>

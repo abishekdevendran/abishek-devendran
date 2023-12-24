@@ -62,13 +62,13 @@
 		@apply scroll-m-20 border-b py-6 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0;
 	}
 	h3 {
-		@apply scroll-m-20 text-2xl font-semibold tracking-tight;
+		@apply scroll-m-20 border-b py-6 pb-2 text-2xl font-semibold tracking-tight;
 	}
 	h4 {
 		@apply scroll-m-20 text-xl font-semibold tracking-tight;
 	}
 	p {
-		@apply leading-7 [&:not(:first-child)]:mt-6;
+		@apply leading-7 [&:not(:first-child)]:mt-4 [&:not(:last-child)]:mb-6;
 	}
 	ul {
 		@apply my-4 ml-6 list-disc [&>li]:mt-1;
@@ -78,7 +78,8 @@
 	}
 	/* width */
 	::-webkit-scrollbar {
-		width: 10px;
+		width: 6px;
+		height: 6px;
 	}
 
 	/* Track */

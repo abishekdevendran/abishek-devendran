@@ -14,7 +14,7 @@
 <Header />
 {#key data.url}
 	<div
-		class="transition container"
+		class="transition md:container px-4"
 		in:fly={{ x: -200, duration: 300, delay: 300 }}
 		out:fly={{ x: 200, duration: 300 }}
 	>

@@ -5,13 +5,16 @@
 	import ImageComponent from '$lib/components/md/Img.svelte';
 	import HeadingComponent from '$lib/components/md/Heading.svelte';
 	import CodeComponent from '$lib/components/md/Code.svelte';
+	import LinkComponent from '$lib/components/md/Link.svelte';
+	import PComponent from '$lib/components/md/P.svelte';
 	import { parseDate } from '$lib/dateParser';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import * as Tooltip from '$lib/components/ui/tooltip';
 	import { toast } from 'svelte-sonner';
+	import Giscus from '@giscus/svelte';
 
 	export let data;
-	$title = data.metaData.title+' | Blog ';
+	$title = data.metaData.title + ' | Blog ';
 
 	const shareFunction = async () => {
 		if (navigator.share) {
@@ -55,7 +58,7 @@
 		<h1 class="text-center before:content-none">
 			{data.metaData.title}
 		</h1>
-		<h6 class="w-full flex items-center justify-center gap-4 text-center">
+		<h6 class="w-full flex items-center justify-center gap-4 text-center text-xs sm:text-sm md:text-md">
 			<span>
 				{parseDate(data.metaData.updatedAt ?? data.metaData.publishedAt)}
 			</span>
@@ -66,7 +69,7 @@
 			●
 			<span>{data.metaData.author}</span>
 		</h6>
-		<div class="w-full flex items-center justify-center gap-2">
+		<div class="w-full flex items-center justify-center gap-2 flex-wrap">
 			{#each data.metaData.tags as tag}
 				<span
 					class="text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2 border p-1 rounded-md"
@@ -80,7 +83,7 @@
 	<div class="w-full markdown-holder pb-6">
 		<SvelteMarkdown
 			source={data.content}
-			renderers={{ image: ImageComponent, heading: HeadingComponent, code: CodeComponent }}
+			renderers={{ image: ImageComponent, heading: HeadingComponent, code: CodeComponent, link: LinkComponent, paragraph: PComponent }}
 		/>
 	</div>
 	<div
@@ -118,23 +121,37 @@
 		</Tooltip.Root>
 	</div>
 	<div class="comments" id="comments">
-		<script
-		src="https://giscus.app/client.js"
-		data-repo="abishekdevendran/abishek-devendran"
-		data-repo-id="R_kgDOKzqRKw"
-		data-category="Announcements"
-		data-category-id="DIC_kwDOKzqRK84CbbFO"
-		data-mapping="pathname"
-		data-strict="0"
-		data-reactions-enabled="1"
-		data-emit-metadata="1"
-		data-input-position="top"
-		data-theme="preferred_color_scheme"
-		data-lang="en"
-		data-loading="lazy"
-		crossorigin="anonymous"
-		async
+		<!-- <script
+			src="https://giscus.app/client.js"
+			data-repo="abishekdevendran/abishek-devendran"
+			data-repo-id="R_kgDOKzqRKw"
+			data-category="Announcements"
+			data-category-id="DIC_kwDOKzqRK84CbbFO"
+			data-mapping="pathname"
+			data-strict="0"
+			data-reactions-enabled="1"
+			data-emit-metadata="1"
+			data-input-position="top"
+			data-theme="preferred_color_scheme"
+			data-lang="en"
+			data-loading="lazy"
+			crossorigin="anonymous"
+			async
 		>
-	</script>
+		</script> -->
+		<Giscus
+			repo="abishekdevendran/abishek-devendran"
+			repoId="R_kgDOKzqRKw"
+			category="Announcements"
+			categoryId="DIC_kwDOKzqRK84CbbFO"
+			mapping="pathname"
+			strict="0"
+			reactionsEnabled="1"
+			emitMetadata="1"
+			inputPosition="top"
+			theme="preferred_color_scheme"
+			lang="en"
+			loading="lazy"
+		/>
 	</div>
 </main>

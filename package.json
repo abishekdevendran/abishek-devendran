@@ -30,6 +30,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@giscus/svelte": "^2.4.0",
     "bits-ui": "^0.9.8",
     "clsx": "^2.0.0",
     "lucide-svelte": "^0.294.0",
