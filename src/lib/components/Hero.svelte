@@ -1,5 +1,4 @@
 <script>
-	import { github } from 'svelte-highlight/styles';
 	import Button from './ui/button/button.svelte';
 	import { FileText, Github, Linkedin } from 'lucide-svelte';
 </script>
