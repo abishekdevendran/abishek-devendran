@@ -48,8 +48,8 @@
 	<meta property="og:description" content={data.metaData.description} />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content={"https://abishek-devendran.pages.dev"+data.url} />
-	<meta property="og:image" content={data.metaData.coverImage ?? '/0.jpg'} />
-	<meta name="twitter:image" content={data.metaData.coverImage ?? '/0.jpg'} />
+	<meta property="og:image" content={"https://abishek-devendran.pages.dev"+(data.metaData.coverImage ?? '/0.jpg')} />
+	<meta name="twitter:image" content={"https://abishek-devendran.pages.dev"+(data.metaData.coverImage ?? '/0.jpg')} />
 	<meta name="twitter:site" content="@Real_Abishek" />
 	<meta name="twitter:title" content={data.metaData.title} />
 	<meta name="twitter:description" content={data.metaData.description} />
