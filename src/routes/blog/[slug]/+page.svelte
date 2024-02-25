@@ -47,7 +47,7 @@
 	<meta property="og:title" content={data.metaData.title} />
 	<meta property="og:description" content={data.metaData.description} />
 	<meta property="og:type" content="article" />
-	<meta property="og:url" content={window.location.href} />
+	<meta property="og:url" content={data.url} />
 	<meta property="og:image" content={data.metaData.coverImage ?? '/0.jpg'} />
 	<meta name="twitter:image" content={data.metaData.coverImage ?? '/0.jpg'} />
 	<meta name="twitter:site" content="@Real_Abishek" />
