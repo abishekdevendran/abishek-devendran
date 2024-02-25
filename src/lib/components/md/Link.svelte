@@ -3,4 +3,4 @@
 	export let title: string | undefined = undefined;
 </script>
 
-<a {href} {title} class="underline"><slot /></a>
+<a {href} {title} class="underline text-primary"><slot /></a>

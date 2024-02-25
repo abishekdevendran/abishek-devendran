@@ -58,7 +58,9 @@
 		<h1 class="text-center before:content-none">
 			{data.metaData.title}
 		</h1>
-		<h6 class="w-full flex items-center justify-center gap-4 text-center text-xs sm:text-sm md:text-md">
+		<h6
+			class="w-full flex items-center justify-center gap-4 text-center text-xs sm:text-sm md:text-md"
+		>
 			<span>
 				{parseDate(data.metaData.updatedAt ?? data.metaData.publishedAt)}
 			</span>
@@ -83,7 +85,13 @@
 	<div class="w-full markdown-holder pb-6">
 		<SvelteMarkdown
 			source={data.content}
-			renderers={{ image: ImageComponent, heading: HeadingComponent, code: CodeComponent, link: LinkComponent, paragraph: PComponent }}
+			renderers={{
+				image: ImageComponent,
+				heading: HeadingComponent,
+				code: CodeComponent,
+				link: LinkComponent,
+				paragraph: PComponent
+			}}
 		/>
 	</div>
 	<div

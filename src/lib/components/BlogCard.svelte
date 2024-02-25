@@ -3,7 +3,6 @@
 	import { parseDate } from '$lib/dateParser';
 	import type { Post } from '$lib/types';
 	import { CalendarDays, Hash } from 'lucide-svelte';
-	import { onDestroy, onMount } from 'svelte';
 
 	export let posts: (Post & {
 		slug: string;
@@ -24,10 +23,10 @@
 			</Card.Content>
 			<Card.Header class="p-4 pb-0">
 				<Card.Title>{post.title}</Card.Title>
-				<Card.Description>{post.description}</Card.Description>
+				<Card.Description class="min-h-10">{post.description}</Card.Description>
 				<!-- svelte-ignore a11y-no-static-element-interactions -->
 				<div
-					class="whitespace-nowrap flex-nowrap overflow-hidden scroll-m-2 overflow-ellipsis"
+					class="whitespace-nowrap flex-nowrap overflow-hidden scroll-m-2 overflow-ellipsis pt-2"
 					on:mouseenter={(ev) => {
 						const self = ev.currentTarget;
 						// first child
