@@ -49,10 +49,10 @@
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content={"https://abishek-devendran.pages.dev"+data.url} />
 	<meta property="og:image" content={"https://abishek-devendran.pages.dev"+(data.metaData.coverImage ?? '/0.jpg')} />
-	<meta name="twitter:image" content={"https://abishek-devendran.pages.dev"+(data.metaData.coverImage ?? '/0.jpg')} />
-	<meta name="twitter:site" content="@Real_Abishek" />
-	<meta name="twitter:title" content={data.metaData.title} />
-	<meta name="twitter:description" content={data.metaData.description} />
+	<meta property="twitter:image" content={"https://abishek-devendran.pages.dev"+(data.metaData.coverImage ?? '/0.jpg')} />
+	<meta property="twitter:site" content="@Real_Abishek" />
+	<meta property="twitter:title" content={data.metaData.title} />
+	<meta property="twitter:description" content={data.metaData.description} />
 </svelte:head>
 <main class="max-w-3xl mx-auto px-2 pb-6">
 	<div class="w-full flex items-center justify-center pb-16 pt-4 flex-col gap-4" id="title">
