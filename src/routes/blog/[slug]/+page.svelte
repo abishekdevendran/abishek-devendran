@@ -47,6 +47,12 @@
 	<meta property="og:title" content={data.metaData.title} />
 	<meta property="og:description" content={data.metaData.description} />
 	<meta property="og:type" content="article" />
+	<meta property="og:url" content={window.location.href} />
+	<meta property="og:image" content={data.metaData.coverImage ?? '/0.jpg'} />
+	<meta name="twitter:image" content={data.metaData.coverImage ?? '/0.jpg'} />
+	<meta name="twitter:site" content="@Real_Abishek" />
+	<meta name="twitter:title" content={data.metaData.title} />
+	<meta name="twitter:description" content={data.metaData.description} />
 </svelte:head>
 <main class="max-w-3xl mx-auto px-2 pb-6">
 	<div class="w-full flex items-center justify-center pb-16 pt-4 flex-col gap-4" id="title">
