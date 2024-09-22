@@ -3,8 +3,8 @@
 	import { FileText, Github, Linkedin } from 'lucide-svelte';
 </script>
 
-<div class="w-full flex max-md:flex-col-reverse py-4 items-center justify-between gap-12">
-	<div class="max-w-3xl">
+<div class="w-full flex max-md:flex-col-reverse py-4 items-center justify-between gap-12 container">
+	<div class="md:basis-1/2 flex-grow">
 		<p>Hi, I'm</p>
 		<h1 class="text-4xl font-bold">Abishek Devendran</h1>
 		<p>
@@ -54,5 +54,11 @@
 			</Button>
 		</div>
 	</div>
-	<img src="/pfpBrand.jpg" alt="Abishek Devendran" class="h-full w-auto rounded-full" />
+	<div class="object-contain md:basis-1/6 flex-grow">
+		<img
+			src="/pfpBrand.png"
+			alt="Abishek Devendran"
+			class="rounded-full"
+		/>
+	</div>
 </div>

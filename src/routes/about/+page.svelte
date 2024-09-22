@@ -8,7 +8,7 @@
 	<h2>About Me</h2>
 	<div class="w-full px-8">
 		<div class="rail w-52 pt-8 flex flex-col items-center text-center gap-4 sticky top-10">
-			<img src="/pfpBrand.jpg" alt="Abishek Devendran" class="h-full w-auto rounded-full" />
+			<img src="/pfpBrand.png" alt="Abishek Devendran" class="h-full w-auto rounded-full" />
 			<h3>Abishek Devendran</h3>
 			<div class="icons flex w-full items-center justify-center gap-2">
 				<Button
