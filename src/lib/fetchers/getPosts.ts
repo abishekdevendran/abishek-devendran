@@ -1,44 +1,38 @@
-import type { Post } from "$lib/types";
+import type { Post } from '$lib/types';
 
 export default async function getPosts(tags?: string[]) {
 	let posts: (Post & {
 		slug: string;
 	})[] = [];
 	const paths = import.meta.glob('/src/posts/*.md', {
-		eager: true,
-		as: 'raw'
+		eager: true
 	});
+
 	for (const path in paths) {
-		const file: any = paths[path];
-		// console.log(file);
-		// parse frontmatter for metadata
-		let metaData = {} as Post;
-		let block = file.split('---')[1].trim().split('\n');
-		for (const line of block) {
-			const [key, value]: [keyof Post, string] = line.split(':');
-			if (key === 'tags') {
-				// remove brackets
-				metaData[key] = value.slice(2, -1).split(', ');
-				continue;
+		const file = paths[path];
+		const slug = path.split('/').pop()?.replace(/\.md$/, '');
+
+		if (file && typeof file === 'object' && 'metadata' in file && slug) {
+			const metadata = file.metadata as Post;
+			if (metadata.published) {
+				const post = { ...metadata, slug };
+				post.tags = post.tags || []; // Ensure tags is an array
+				if (!post.author) post.author = 'Abishek Devendran';
+				posts.push(post);
 			}
-			// @ts-ignore
-			metaData[key] = value.trim();
 		}
-		const slug = path.split('/').pop()?.replace(/\.md$/, '')!;
-		let author = metaData.author ?? 'Abishek Devendran';
-		metaData.published && posts.push({ slug, ...metaData, author });
 	}
+
 	if (tags) {
 		posts = posts.filter((post) => post.tags?.some((tag) => tags.includes(tag)));
 	}
-	posts.sort(
-		(a, b) =>{
-			let aDateArr = a.updatedAt ? a.updatedAt.split('/') : a.publishedAt.split('/');
-			let bDateArr = b.updatedAt ? b.updatedAt.split('/') : b.publishedAt.split('/');
-			let aDate = new Date(`${aDateArr[2]}-${aDateArr[1]}-${aDateArr[0]}`);
-			let bDate = new Date(`${bDateArr[2]}-${bDateArr[1]}-${bDateArr[0]}`);
-			return bDate.getTime() - aDate.getTime();
-		}
-	);
+
+	posts.sort((a, b) => {
+		return (
+			new Date(b.updatedAt || b.publishedAt).getTime() -
+			new Date(a.updatedAt || a.publishedAt).getTime()
+		);
+	});
+
 	return posts;
 }

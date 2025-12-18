@@ -1,10 +1,11 @@
 ---
 title: First Post!
-publishedAt: 29/09/2021
+publishedAt: 2021-09-29
 description: This is my first post!
 tags: [first, post, Svelte, Kit, Test]
 published: true
 coverImage: /0.jpg
+author: Abishek Devendran
 ---
 
 # It is what is it

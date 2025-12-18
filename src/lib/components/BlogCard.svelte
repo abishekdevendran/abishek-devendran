@@ -1,73 +1,74 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card';
-	import { parseDate } from '$lib/dateParser';
 	import type { Post } from '$lib/types';
-	import { CalendarDays, Hash } from 'lucide-svelte';
+	import { CalendarDays, Hash } from '@lucide/svelte';
 
-	export let posts: (Post & {
-		slug: string;
-	})[];
+	interface Props {
+		posts: (Post & {
+			slug: string;
+		})[];
+	}
+
+	let { posts }: Props = $props();
 </script>
 
 {#each posts as post}
-	<a href={`/blog/${post.slug}`} class="flex-grow basis-0 min-w-0 md:h-full">
-		<Card.Root
-			class="flex-grow basis-0 w-full hover:border-white transition-all duration-100 transform-gpu md:h-full"
+	<a href={`/blog/${post.slug}`} class="group flex flex-col h-full w-full min-w-0">
+		<div
+			class="relative flex flex-col h-full overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 group-hover:border-primary/50 group-hover:shadow-lg group-hover:-translate-y-1"
 		>
-			<Card.Content class="p-2 h-48">
+			<div class="aspect-video w-full overflow-hidden bg-muted">
 				<img
 					src={post.coverImage ?? '/0.jpg'}
 					alt={post.title}
-					class="w-full h-48 md:h-full object-cover rounded-md"
+					class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
 				/>
-			</Card.Content>
-			<Card.Header class="p-4 pb-0">
-				<Card.Title>{post.title}</Card.Title>
-				<Card.Description class="min-h-10">{post.description}</Card.Description>
-				<!-- svelte-ignore a11y-no-static-element-interactions -->
-				<div
-					class="whitespace-nowrap flex-nowrap overflow-hidden scroll-m-2 overflow-ellipsis pt-2"
-					on:mouseenter={(ev) => {
-						const self = ev.currentTarget;
-						// first child
-						const fullContainer = self.firstElementChild;
-						if (!fullContainer) return;
-						// if width of fullContainer is greater than the width of the container
-						if (fullContainer.scrollWidth > fullContainer.clientWidth) {
-							// calculate the difference
-							const diff = fullContainer.scrollWidth - fullContainer.clientWidth;
-							// set style as trasnform: translateX(-diff)
-							// @ts-ignore
-							fullContainer.style.transform = `translateX(-${diff}px)`;
-						}
-					}}
-					on:mouseleave={(ev) => {
-						const self = ev.currentTarget;
-						// first child
-						const fullContainer = self.firstElementChild;
-						if (!fullContainer) return;
-						// @ts-ignore
-						fullContainer.style.transform = `translateX(0px)`;
-					}}
-				>
-					<div class="w-full flex gap-2 mx-auto pb-1 transition-all duration-1000 ease-linear">
-						{#each post.tags as tag}
+			</div>
+
+			<div class="flex flex-col flex-grow p-5 gap-3">
+				<div class="space-y-2">
+					<h3
+						class="text-xl font-bold tracking-tight text-foreground line-clamp-2 md:line-clamp-1 group-hover:text-primary transition-colors"
+					>
+						{post.title}
+					</h3>
+					<p class="text-sm text-muted-foreground line-clamp-2">
+						{post.description}
+					</p>
+				</div>
+
+				<div class="mt-auto pt-4 flex flex-col gap-4">
+					<div class="flex flex-wrap gap-2">
+						{#each post.tags.slice(0, 3) as tag}
 							<span
-								class="text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2 border p-1 pr-2 rounded-md"
+								class="inline-flex items-center gap-1 rounded-md bg-secondary/50 px-2 py-1 text-xs font-medium text-secondary-foreground"
 							>
-								<Hash class="inline-block h-4 w-4" />
-								{tag}</span
-							>
+								<Hash class="h-3 w-3" />
+								{tag}
+							</span>
 						{/each}
+						{#if post.tags.length > 3}
+							<span
+								class="inline-flex items-center rounded-md bg-secondary/50 px-2 py-1 text-xs font-medium text-secondary-foreground"
+							>
+								+{post.tags.length - 3}
+							</span>
+						{/if}
+					</div>
+					<div class="flex items-center justify-between">
+						<div class="flex items-center text-xs text-muted-foreground">
+							<CalendarDays class="mr-1 h-3 w-3" />
+							{new Date(post.updatedAt || post.publishedAt).toLocaleDateString('en-US', {
+								day: 'numeric',
+								month: 'long',
+								year: 'numeric'
+							})}
+						</div>
+						<div>
+							<span class="text-xs text-muted-foreground">{post.readingTime.text}</span>
+						</div>
 					</div>
 				</div>
-			</Card.Header>
-			<Card.Footer class="px-4 pt-2 pb-4">
-				<div class="flex gap-2 items-center justify-center">
-					<CalendarDays class="inline-block h-4 w-4" />
-					{parseDate(post.updatedAt ?? post.publishedAt)}
-				</div>
-			</Card.Footer>
-		</Card.Root>
+			</div>
+		</div>
 	</a>
 {/each}

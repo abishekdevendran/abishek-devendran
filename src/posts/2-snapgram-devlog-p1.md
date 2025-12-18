@@ -1,10 +1,11 @@
 ---
 title: Snapgram Devlog (Part 1)
-publishedAt: 24/12/2023
+publishedAt: 2023-12-24
 description: Devlog update detailing the progress of Snapgram
 tags: [Devlog, Snapgram, Sveltekit, Personal Project, SQL, DrizzleORM]
 published: true
 coverImage: /2.png
+author: Abishek Devendran
 ---
 
 It's been a while since I've posted anything on here, and it's already Christmas Eve. Maintaining blogs is harder than I initially gave it credit for (just like with everything that involves Habits).
@@ -65,4 +66,4 @@ Currently the deployment looks like shit, but I'm more of a funcitonality over f
 Do checkout, and maybe even contribute to the source code @ [SnapGram Github](https://github.com/abishekdevendran/SnapGram)
 It's currently live @ https://thesnapgram.vercel.app/
 
-P.S shoutout to [FakerJS](https://fakerjs.dev/) for the seamless seeding process. I get over seemingly daunting processes everyday, and seeding was one of those, but Faker was so intuitive that my databse was populated in under 5 mins 💀.
+P.S shoutout to [FakerJS](https://fakerjs.dev/) for the seamless seeding process. I get over seemingly daunting processes everyday, and seeding was one of those, but Faker was so intuitive that my database was populated in under 5 mins 💀.

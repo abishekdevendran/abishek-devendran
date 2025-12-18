@@ -1,18 +1,21 @@
 ---
 title: Second Post!
-publishedAt: 30/09/2021
-updatedAt: 31/09/2021
+publishedAt: 2021-09-30
+updatedAt: 2021-09-30
 description: This is my second post
 tags: [Second, Test]
 published: true
+author: Abishek Devendran
 ---
 
 ## Big text
-~~Almost as big as ********* (My lawyer has advised me not to complete this joke.)~~
+
+~~Almost as big as \***\*\*\*\*** (My lawyer has advised me not to complete this joke.)~~
 
 ![Bussin GIF](https://media.tenor.com/ZLqwAJWQw14AAAAC/cat-bussin.gif)
 
 ## Why is this a big deal?
+
 - The memes, duh.
 - You want more reasons? ![You serious? GIF](https://media.tenor.com/PG7TQGmTPoMAAAAC/are-you-serious-spiderman.gif)
 
@@ -32,4 +35,3 @@ async brokenPromise();
 #### You know what they never say?
 
 ##### Mitochondria is the powerhouse of the cell😳
-

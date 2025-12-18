@@ -1,16 +1,24 @@
-<div class="w-full border-t max-md:pb-16">
-	<div class="container flex items-center justify-between h-12">
+<footer class="w-full border-t border-border mt-auto">
+	<div
+		class="container mx-auto flex flex-col md:flex-row items-center justify-between py-6 px-4 md:px-6 gap-4 text-sm text-muted-foreground"
+	>
 		<div>
-			Abishek Devendran | © {new Date().getFullYear()}
+			<span class="font-medium text-foreground">Abishek Devendran</span> | © {new Date().getFullYear()}
 		</div>
 		<div class="flex gap-2 items-center justify-center">
-			Made with <a href="https://svelte.dev">
+			<span>Made with 💙 in </span>
+			<a
+				href="https://svelte.dev"
+				target="_blank"
+				rel="noreferrer"
+				class="hover:opacity-80 transition-opacity"
+			>
 				<img
 					src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg"
 					alt="Svelte Logo"
-					class="h-6 w-auto inline"
+					class="h-5 w-auto inline"
 				/>
 			</a>
 		</div>
 	</div>
-</div>
+</footer>

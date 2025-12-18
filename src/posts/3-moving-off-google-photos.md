@@ -1,10 +1,11 @@
 ---
 title: Moving off Google Photos
-publishedAt: 25/02/2024
+publishedAt: 2024-02-25
 description: In this post, I talk about my motivation for moving off Google Photos and the steps I took to do so.
 tags: [Self Hosting, Google, Photos, Immich, VPN, ZeroTier]
 published: true
 coverImage: /3.png
+author: Abishek Devendran
 ---
 
 # The usual excuses
@@ -34,7 +35,7 @@ After a lot of research, I decided to go with [Immich](https://immich.app/). It'
 
 # The Setup
 
-My Phone and Laptop are setup in the same Zerotier Mesh VPN with virtual static IPs(maybe even other family members in the future, Zerotier supports upto 15 nodes per network). I run a docker compose Immich setup that exposes the api @ localhost:2283, I configure the <Virtual Static IP>:2283 on my phone's Immich app, and I'm good to go. The phone app built with flutter comes with automatic foreground and background syncs, and I basically don't have to worry about my photos anymore. I might setup a cron job that backs up my photos folder in my Immich library to a different disk, but I'm not sure if I need to do that yet.
+My Phone and Laptop are setup in the same Zerotier Mesh VPN with virtual static IPs(maybe even other family members in the future, Zerotier supports upto 15 nodes per network). I run a docker compose Immich setup that exposes the api @ localhost:2283, I configure the `Virtual Static IP`:2283 on my phone's Immich app, and I'm good to go. The phone app built with flutter comes with automatic foreground and background syncs, and I basically don't have to worry about my photos anymore. I might setup a cron job that backs up my photos folder in my Immich library to a different disk, but I'm sure if I need to do that yet.
 
 # The Future
 

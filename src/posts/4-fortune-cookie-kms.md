@@ -1,10 +1,11 @@
 ---
 title: Talk to Your Data: The Future of Knowledge Access with RAG, Vector Indexes, & More
-publishedAt: 19/03/2024
+publishedAt: 2024-03-19
 description: This post addresses purpose-built Conversational RAG Agents.
 tags: [Fortune Cookie, KMS, RAG, Vector Indexes, Knowledge Graphs, NL2SQL, RandomWalk.AI]
 published: true
 coverImage: /4.png
+author: Abishek Devendran
 ---
 
 # Introduction
