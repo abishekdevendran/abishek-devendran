@@ -8,6 +8,8 @@
 	import { toast } from 'svelte-sonner';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
+	import { resolveImage } from '$lib/imageHandler.js';
+	import Img from '$lib/components/Img.svelte';
 
 	let { data } = $props();
 	// svelte-ignore state_referenced_locally
@@ -66,23 +68,26 @@
 			toast.error('Your browser does not support sharing');
 		}
 	};
+
+	const fallbackImage = resolveImage('0.jpg')!;
 </script>
 
 <svelte:head>
 	<meta name="description" content={data.metaData.description} />
-	<meta property="og:url" content={'https://abishek-devendran.pages.dev' + data.url} />
+	<meta property="og:url" content={'https://abishek.work' + data.url} />
 	<meta property="og:title" content={data.metaData.title} />
 	<meta property="og:description" content={data.metaData.description} />
 	<meta property="og:type" content="article" />
 	<meta
 		property="og:image"
-		content={'https://abishek-devendran.pages.dev' + (data.metaData.coverImage ?? '/0.jpg')}
+		content={'https://abishek.work' +
+			((resolveImage(data.metaData.coverImage) as any)?.img.src ?? (fallbackImage as any).img.src)}
 	/>
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:creator" content="@Real_Abishek" />
 </svelte:head>
 
-<main class="max-w-4xl mx-auto px-4 pb-12 pt-8 md:pt-12">
+<div class="max-w-4xl mx-auto px-4 pb-12 pt-8 md:pt-12">
 	<div class="flex flex-col gap-6 md:gap-8 pb-12" id="title">
 		<div class="space-y-4 text-center">
 			<h1
@@ -114,8 +119,8 @@
 		<div
 			class="aspect-video w-full overflow-hidden rounded-2xl border border-border bg-muted shadow-sm"
 		>
-			<img
-				src={data.metaData.coverImage ?? '/0.jpg'}
+			<Img
+				src={data.metaData.coverImage ?? '0.jpg'}
 				alt={data.metaData.title}
 				class="w-full h-full object-cover"
 			/>
@@ -136,9 +141,8 @@
 	<article class="prose prose-neutral dark:prose-invert mx-auto w-full max-w-3xl">
 		<data.component />
 	</article>
-
 	<div
-		class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 p-1.5 rounded-full bg-background/80 backdrop-blur-md border border-border shadow-lg z-50 transition-all hover:scale-105"
+		class="sticky bottom-8 mt-10 flex items-center w-fit mx-auto gap-2 p-1.5 rounded-full bg-background/80 backdrop-blur-md border border-border shadow-lg z-50 transition-all"
 	>
 		<Button class="rounded-full w-10 h-10 p-0" variant="ghost" onclick={shareFunction}>
 			<Share2 class="h-4 w-4" />
@@ -154,11 +158,13 @@
 	<div class="max-w-3xl mx-auto mt-10 pt-10 border-t border-border" id="comments">
 		<h2 class="text-2xl font-bold tracking-tight mb-8">Comments</h2>
 		<Giscus
+			id="comments"
 			repo="abishekdevendran/abishek-devendran"
 			repoId="R_kgDOKzqRKw"
 			category="Announcements"
 			categoryId="DIC_kwDOKzqRK84CbbFO"
 			mapping="pathname"
+			term="Welcome to my blog"
 			strict="0"
 			reactionsEnabled="1"
 			emitMetadata="1"
@@ -168,4 +174,4 @@
 			loading="lazy"
 		/>
 	</div>
-</main>
+</div>

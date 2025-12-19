@@ -1,8 +1,19 @@
 @import 'tailwindcss';
-
 @import 'tw-animate-css';
-
 @custom-variant dark (&:is(.dark *));
+
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('@fontsource-variable/outfit/files/outfit-latin-wght-normal.woff2') format('woff2-variations');
+}
+
+@theme {
+  /* This overrides the default 'font-sans' utility */
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
 
 :root {
 	--font-sans:
@@ -145,6 +156,9 @@
 	* {
 		@apply border-border outline-ring/50;
 	}
+	html {
+		scroll-behavior: smooth;
+	}
 	body {
 		@apply bg-background font-sans text-foreground antialiased;
 	}
@@ -169,7 +183,7 @@
 		@apply mt-8 mb-4 text-xl;
 	}
 	.prose p {
-		@apply mb-6 leading-7 [&:not(:first-child)]:mt-6;
+		@apply mb-6 leading-7 not-first:mt-6;
 	}
 	.prose a {
 		@apply font-medium text-foreground underline decoration-primary/50 underline-offset-4 transition-colors hover:decoration-primary;

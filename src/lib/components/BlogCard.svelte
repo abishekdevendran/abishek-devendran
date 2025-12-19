@@ -1,4 +1,26 @@
 <script lang="ts">
+	import Img from '$lib/components/Img.svelte';
+	const assets = import.meta.glob('$lib/assets/*.{avif,gif,heif,jpeg,jpg,png,tiff,webp}', {
+		eager: true,
+		query: { enhanced: true }
+	});
+
+	export function resolveImage(path: string | undefined) {
+		if (!path) return null;
+
+		const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+
+		// Find the matching key
+		const matchKey = Object.keys(assets).find((key) => key.endsWith(cleanPath));
+
+		if (!matchKey) return null;
+
+		// 2. Extract the 'default' export manually
+		// This ensures we pass the EXACT reference the plugin created.
+		const module = assets[matchKey] as { default: unknown };
+
+		return module.default;
+	}
 	import type { Post } from '$lib/types';
 	import { CalendarDays, Hash } from '@lucide/svelte';
 
@@ -9,6 +31,7 @@
 	}
 
 	let { posts }: Props = $props();
+	const fallbackImage = resolveImage('0.jpg');
 </script>
 
 {#each posts as post}
@@ -17,14 +40,15 @@
 			class="relative flex flex-col h-full overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 group-hover:border-primary/50 group-hover:shadow-lg group-hover:-translate-y-1"
 		>
 			<div class="aspect-video w-full overflow-hidden bg-muted">
-				<img
-					src={post.coverImage ?? '/0.jpg'}
+				<Img
+					src={post.coverImage ?? '0.jpg'}
 					alt={post.title}
+					sizes="(max-width: 768px) 100vw, 400px"
 					class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
 				/>
 			</div>
 
-			<div class="flex flex-col flex-grow p-5 gap-3">
+			<div class="flex flex-col grow p-5 gap-3">
 				<div class="space-y-2">
 					<h3
 						class="text-xl font-bold tracking-tight text-foreground line-clamp-2 md:line-clamp-1 group-hover:text-primary transition-colors"
@@ -63,9 +87,11 @@
 								year: 'numeric'
 							})}
 						</div>
-						<div>
-							<span class="text-xs text-muted-foreground">{post.readingTime.text}</span>
-						</div>
+						{#if post.readingTime}
+							<div>
+								<span class="text-xs text-muted-foreground">{post.readingTime.text}</span>
+							</div>
+						{/if}
 					</div>
 				</div>
 			</div>

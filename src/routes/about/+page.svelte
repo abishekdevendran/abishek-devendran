@@ -10,6 +10,7 @@
 		MapPin,
 		ExternalLink
 	} from '@lucide/svelte';
+	import pfpBrand from '$lib/assets/pfpBrand.png?enhanced';
 
 	$title = 'About';
 
@@ -70,8 +71,9 @@
 				<div
 					class="absolute -inset-1 bg-linear-to-r from-blue-600 to-cyan-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"
 				></div>
-				<img
-					src="/pfpBrand.png"
+				<enhanced:img
+					src={pfpBrand}
+					sizes="200px"
 					alt="Abishek Devendran"
 					class="relative h-48 w-48 object-cover rounded-full border-2 border-background shadow-xl"
 				/>

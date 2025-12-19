@@ -2,6 +2,7 @@
 	import { title } from '$lib/stores/title';
 	import { page } from '$app/state';
 	import ModeToggle from '$lib/components/ModeToggle.svelte';
+	import SignatureBrand from '$lib/assets/SignatureBrand.png?enhanced';
 
 	let computedTitle = $derived(
 		title && $title !== 'Home' ? `${$title} | Abishek Devendran` : 'Abishek Devendran'
@@ -17,9 +18,10 @@
 	class="fixed bottom-4 left-4 right-4 md:bottom-auto md:left-0 md:right-0 md:top-0 z-50 rounded-2xl md:rounded-none border bg-background/80 shadow-sm backdrop-blur-md md:border-b md:border-x-0 md:bg-background/75 transition-all duration-300 pointer-events-auto"
 >
 	<div class="container flex h-14 items-center justify-between px-4 md:px-6 mx-auto">
-		<a href="/" class="group flex items-center gap-2 transition-opacity hover:opacity-80">
-			<img
-				src="/SignatureBrand.png"
+		<a href="/" class="group flex items-center gap-2 transition-opacity hover:opacity-80" title="Abishek">
+			<enhanced:img
+				sizes="100px"
+				src={SignatureBrand}
 				alt="Abishek Devendran"
 				class="h-8 w-auto dark:invert md:h-9"
 			/>

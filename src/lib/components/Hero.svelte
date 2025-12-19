@@ -1,5 +1,6 @@
 <script>
 	import { FileText, Github, Linkedin } from '@lucide/svelte';
+	import pfpBrand from '$lib/assets/pfpBrand.png?enhanced';
 </script>
 
 <div
@@ -90,10 +91,13 @@
 			}}
 		>
 			<div
-				class="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-full opacity-25 group-hover:opacity-50 blur transition duration-1000 group-hover:duration-200"
+				class="absolute -inset-1 bg-linear-to-r from-primary to-secondary rounded-full opacity-25 group-hover:opacity-50 blur transition duration-1000 group-hover:duration-200"
 			></div>
-			<img
-				src="/pfpBrand.png"
+			<enhanced:img
+				fetchpriority="high"
+				src={pfpBrand}
+				sizes="200px"
+				loading="eager"
 				alt="Abishek Devendran"
 				class="relative w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-4 border-background shadow-2xl transition-transform duration-200 ease-out aspect-square shrink-0"
 				style="transform: perspective(1000px) rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg)) scale3d(1.02, 1.02, 1.02);"

@@ -21,16 +21,24 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Abishek Devendran</title>
+	<meta
+		name="description"
+		content="Personal portfolio and blog of Abishek Devendran, an SDE-I at Amazon exploring system design, self-hosting, and web development."
+	/>
+</svelte:head>
+
 <Header />
 <Toaster />
 <ModeWatcher />
 {#key data.url}
-	<div
+	<main
 		class="transition container mx-auto px-4 md:px-6 pt-24 pb-24 md:pb-12 min-h-screen flex flex-col"
 		in:fly={{ x: -20, duration: 300, delay: 150 }}
 		out:fly={{ x: 20, duration: 200 }}
 	>
 		{@render children?.()}
-	</div>
+	</main>
 {/key}
 <Footer />

@@ -14,7 +14,7 @@
 				class="hover:opacity-80 transition-opacity"
 			>
 				<img
-					src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg"
+					src="/Svelte_Logo.svg"
 					alt="Svelte Logo"
 					class="h-5 w-auto inline"
 				/>

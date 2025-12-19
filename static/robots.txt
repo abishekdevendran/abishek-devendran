@@ -1,6 +1,4 @@
-User-agent: Googlebot
-User-agent: Twitterbot
+User-agent: *
 Disallow:
 
-User-agent: *
-Disallow: /
+Sitemap: https://abishek.work/sitemap.xml
