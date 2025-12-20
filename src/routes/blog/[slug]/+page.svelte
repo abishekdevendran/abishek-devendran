@@ -83,12 +83,20 @@
 		content={'https://abishek.work' +
 			((resolveImage(data.metaData.coverImage) as any)?.img.src ?? (fallbackImage as any).img.src)}
 	/>
-	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:creator" content="@Real_Abishek" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:creator" content="@Real_Abishek" />
+	<meta name="twitter:title" content={data.metaData.title} />
+	<meta name="twitter:description" content={data.metaData.description} />
+	<meta
+		name="twitter:image"
+		content={'https://abishek.work' +
+			((resolveImage(data.metaData.coverImage) as any)?.img.src ?? (fallbackImage as any).img.src)}
+	/>
 </svelte:head>
 
-<div class="max-w-4xl mx-auto px-4 pb-12 pt-8 md:pt-12">
-	<div class="flex flex-col gap-6 md:gap-8 pb-12" id="title">
+<div>
+	<div class="flex flex-col gap-6 md:gap-8 pb-12 max-w-3xl mx-auto px-4 pt-8 md:pt-12 lg:max-w-4xl" id="title">
 		<div class="space-y-4 text-center">
 			<h1
 				class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-tight"
@@ -138,11 +146,13 @@
 		</div>
 	</div>
 
-	<article class="prose prose-neutral dark:prose-invert mx-auto w-full max-w-3xl">
+	<article
+		class="prose prose-neutral dark:prose-invert mx-auto w-full max-w-lg md:max-w-xl lg:max-w-3xl"
+	>
 		<data.component />
 	</article>
 	<div
-		class="sticky bottom-8 mt-10 flex items-center w-fit mx-auto gap-2 p-1.5 rounded-full bg-background/80 backdrop-blur-md border border-border shadow-lg z-50 transition-all"
+		class="sticky bottom-20 md:bottom-8 mt-10 flex items-center w-fit mx-auto gap-2 p-1.5 rounded-full bg-background/80 backdrop-blur-md border border-border shadow-lg z-50 transition-all"
 	>
 		<Button class="rounded-full w-10 h-10 p-0" variant="ghost" onclick={shareFunction}>
 			<Share2 class="h-4 w-4" />
