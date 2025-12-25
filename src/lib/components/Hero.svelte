@@ -1,5 +1,5 @@
 <script>
-	import { FileText, Github, Linkedin } from '@lucide/svelte';
+	import { FileText, Github, Instagram, Linkedin } from '@lucide/svelte';
 	import pfpBrand from '$lib/assets/pfpBrand.png?enhanced';
 </script>
 
@@ -20,15 +20,15 @@
 			my free time, I play video games, chess, and watch Anime.
 		</p>
 
-		<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+		<div class="grid grid-cols-5 gap-4 mt-4">
 			<a
-				href="https://twitter.com/Real_Abishek"
+				href="https://x.com/theabidev"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="group flex items-center justify-center gap-3 p-4 rounded-xl border border-border bg-card hover:bg-secondary/50 hover:border-secondary-foreground/20 transition-all duration-300"
 			>
 				<span class="text-xl group-hover:scale-110 transition-transform shrink-0">𝕏</span>
-				<span class="font-medium group-hover:text-foreground">Twitter</span>
+				<span class="font-medium group-hover:text-foreground max-lg:hidden">Twitter</span>
 			</a>
 
 			<a
@@ -40,7 +40,7 @@
 				<Linkedin
 					class="w-5 h-5 group-hover:scale-110 transition-transform text-[#0077b5] shrink-0"
 				/>
-				<span class="font-medium group-hover:text-foreground">LinkedIn</span>
+				<span class="font-medium group-hover:text-foreground max-lg:hidden">LinkedIn</span>
 			</a>
 
 			<a
@@ -50,7 +50,17 @@
 				class="group flex items-center justify-center gap-3 p-4 rounded-xl border border-border bg-card hover:bg-secondary/50 hover:border-secondary-foreground/20 transition-all duration-300"
 			>
 				<Github class="w-5 h-5 group-hover:scale-110 transition-transform shrink-0" />
-				<span class="font-medium group-hover:text-foreground">Github</span>
+				<span class="font-medium group-hover:text-foreground max-lg:hidden">Github</span>
+			</a>
+
+			<a
+				href="https://www.instagram.com/theabidev/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="group flex items-center justify-center gap-3 p-4 rounded-xl border border-border bg-card hover:bg-secondary/50 hover:border-secondary-foreground/20 transition-all duration-300"
+			>
+				<Instagram class="w-5 h-5 group-hover:scale-110 transition-transform shrink-0" />
+				<span class="font-medium group-hover:text-foreground max-lg:hidden">Instagram</span>
 			</a>
 
 			<a
@@ -62,7 +72,7 @@
 				<FileText
 					class="w-5 h-5 group-hover:scale-110 transition-transform text-primary shrink-0"
 				/>
-				<span class="font-medium group-hover:text-foreground">Resume</span>
+				<span class="font-medium group-hover:text-foreground max-lg:hidden">Resume</span>
 			</a>
 		</div>
 	</div>

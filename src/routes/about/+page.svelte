@@ -8,7 +8,10 @@
 		Briefcase,
 		GraduationCap,
 		MapPin,
-		ExternalLink
+		ExternalLink,
+
+		Instagram
+
 	} from '@lucide/svelte';
 	import pfpBrand from '$lib/assets/pfpBrand.png?enhanced';
 
@@ -85,12 +88,7 @@
 			</div>
 
 			<div class="flex flex-wrap justify-center gap-3 w-full">
-				<Button
-					variant="outline"
-					size="icon"
-					href="https://twitter.com/Real_Abishek"
-					target="_blank"
-				>
+				<Button variant="outline" size="icon" href="https://x.com/theabidev" target="_blank">
 					<span class="text-lg font-bold">𝕏</span>
 				</Button>
 				<Button
@@ -108,6 +106,14 @@
 					target="_blank"
 				>
 					<Github class="h-4 w-4" />
+				</Button>
+				<Button
+					variant="outline"
+					size="icon"
+					href="https://www.instagram.com/theabidev/"
+					target="_blank"
+				>
+					<Instagram class="h-4 w-4" />
 				</Button>
 				<Button variant="outline" size="icon" href="mailto:abishekdevendran@gmail.com">
 					<Mail class="h-4 w-4" />
