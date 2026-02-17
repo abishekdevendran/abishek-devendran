@@ -1,6 +1,5 @@
 <script>
 	import Button from '$lib/components/ui/button/button.svelte';
-	import { title } from '$lib/stores/title';
 	import {
 		Github,
 		Linkedin,
@@ -14,8 +13,6 @@
 
 	} from '@lucide/svelte';
 	import pfpBrand from '$lib/assets/pfpBrand.png?enhanced';
-
-	$title = 'About';
 
 	// Timeline Data
 	const timeline = [
@@ -62,6 +59,10 @@
 		}
 	];
 </script>
+
+<svelte:head>
+	<title>About | Abishek Devendran</title>
+</svelte:head>
 
 <div class="md:pt-16 pb-12 w-full max-w-6xl mx-auto px-4 sm:px-8">
 	<h2 class="text-3xl font-bold mb-8 md:pl-8">About Me</h2>

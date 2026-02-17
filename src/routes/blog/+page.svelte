@@ -1,10 +1,12 @@
 <script lang="ts">
 	import BlogCard from '$lib/components/BlogCard.svelte';
-	import { title } from '$lib/stores/title';
 
 	let { data } = $props();
-	$title = 'Blog';
 </script>
+
+<svelte:head>
+	<title>Blog | Abishek Devendran</title>
+</svelte:head>
 
 <div class="flex flex-col justify-center gap-8 md:pt-12 pb-12 w-full">
 	<div class="space-y-4 text-center md:text-left">

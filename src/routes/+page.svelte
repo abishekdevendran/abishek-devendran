@@ -1,16 +1,14 @@
 <script lang="ts">
 	import BlogCard from '$lib/components/BlogCard.svelte';
 	import Hero from '$lib/components/Hero.svelte';
-	import { title } from '$lib/stores/title';
 	import { resolveImage } from '$lib/imageHandler';
 
 	let { data } = $props();
-	$title = 'Home';
 </script>
 
 <svelte:head>
 	<title>Abishek Devendran</title>
-
+	<link rel="canonical" href="https://abishek.work/" />
 	<meta
 		name="description"
 		content="Personal portfolio and blog of Abishek Devendran, an SDE-I at Amazon exploring system design, self-hosting, and web development."

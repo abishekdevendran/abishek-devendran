@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { title } from '$lib/stores/title';
 	import { Hash, MessagesSquare, Share2 } from '@lucide/svelte';
 	import { mode } from 'mode-watcher';
 
@@ -12,8 +11,6 @@
 	import Img from '$lib/components/Img.svelte';
 
 	let { data } = $props();
-	// svelte-ignore state_referenced_locally
-	$title = data.metaData.title + ' | Blog ';
 
 	onMount(() => {
 		if (!browser) return;
@@ -73,11 +70,22 @@
 </script>
 
 <svelte:head>
+	<title>{data.metaData.title} | Abishek Devendran</title>
+	<link rel="canonical" href={`https://abishek.work${data.url}`} />
 	<meta name="description" content={data.metaData.description} />
 	<meta property="og:url" content={'https://abishek.work' + data.url} />
 	<meta property="og:title" content={data.metaData.title} />
 	<meta property="og:description" content={data.metaData.description} />
 	<meta property="og:type" content="article" />
+	<meta property="article:published_time" content={data.metaData.publishedAt} />
+	<meta
+		property="article:modified_time"
+		content={data.metaData.updatedAt ?? data.metaData.publishedAt}
+	/>
+	<meta property="article:author" content={data.metaData.author} />
+	{#each data.metaData.tags as tag}
+		<meta property="article:tag" content={tag} />
+	{/each}
 	<meta
 		property="og:image"
 		content={'https://abishek.work' +
@@ -93,10 +101,39 @@
 		content={'https://abishek.work' +
 			((resolveImage(data.metaData.coverImage) as any)?.img.src ?? (fallbackImage as any).img.src)}
 	/>
+	{@html `
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://abishek.work${data.url}"
+      },
+      "headline": "${data.metaData.title}",
+      "description": "${data.metaData.description}",
+      "image": "https://abishek.work${(resolveImage(data.metaData.coverImage) as any)?.img.src ?? (fallbackImage as any).img.src}",  
+      "author": {
+        "@type": "Person",
+        "name": "${data.metaData.author}",
+        "url": "https://abishek.work/"
+      },  
+      "publisher": {
+        "@type": "Person",
+        "name": "Abishek Devendran"
+      },
+      "datePublished": "${data.metaData.publishedAt}",
+      "dateModified": "${data.metaData.updatedAt ?? data.metaData.publishedAt}"
+    }
+    </script>
+  `}
 </svelte:head>
 
 <div>
-	<div class="flex flex-col gap-6 md:gap-8 pb-12 max-w-3xl mx-auto px-4 pt-8 md:pt-12 lg:max-w-4xl" id="title">
+	<div
+		class="flex flex-col gap-6 md:gap-8 pb-12 max-w-3xl mx-auto px-4 pt-8 md:pt-12 lg:max-w-4xl"
+		id="title"
+	>
 		<div class="space-y-4 text-center">
 			<h1
 				class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-tight"
