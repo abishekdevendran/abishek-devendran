@@ -1,6 +1,7 @@
 // tests/e2e/pages/index.ts
 import type { Page } from '@playwright/test';
 import { HomePage } from './HomePage.ts';
+import { BlogPage } from './BlogPage.ts';
 
 export default function createPages(page: Page) {
 	// let pages = {
@@ -12,7 +13,10 @@ export default function createPages(page: Page) {
   return {
 		get homePage() {
 			return new HomePage(page);
-		}
+		},
+    get blogPage() {
+      return new BlogPage(page);
+    }
 	};
 }
 

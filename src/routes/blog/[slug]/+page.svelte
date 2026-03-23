@@ -202,7 +202,7 @@
 		</Button>
 	</div>
 
-	<div class="max-w-3xl mx-auto mt-10 pt-10 border-t border-border" id="comments">
+	<div class="max-w-3xl mx-auto mt-10 pt-10 border-t border-border" id="comments-section">
 		<h2 class="text-2xl font-bold tracking-tight mb-8">Comments</h2>
 		<Giscus
 			id="comments"
