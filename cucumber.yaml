@@ -1,0 +1,27 @@
+default:
+  # Use modern async/await syntax for auto-generated step snippets
+  formatOptions:
+    snippetInterface: async-await
+  
+  # Where to find the plain-English Gherkin files
+  paths:
+    - tests/e2e/features/**/*.feature
+    
+  # The glue code and our on-the-fly TypeScript compiler
+  import:
+    - tsx/esm
+    - tests/e2e/features/support/**/*.ts
+    - tests/e2e/features/step_definitions/**/*.ts
+    
+  # Output to both the terminal and a transient HTML dashboard
+  format:
+    - progress
+    - html:test-results/cucumber-report.html
+
+  # --- ENTERPRISE UPGRADES ---
+  
+  # Automatically retry a failed test once before actually failing the suite (beats flakiness)
+  retry: 1 
+  
+  # Run tests in parallel across multiple CPU cores to cut execution time in half
+  parallel: 2
