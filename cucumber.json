@@ -1,0 +1,13 @@
+{
+	"default": {
+		"formatOptions": {
+			"snippetInterface": "async-await"
+		},
+		"paths": ["tests/e2e/features/**/*.feature"],
+		"import": [
+			"tsx/esm",
+			"tests/e2e/features/support/**/*.ts",
+			"tests/e2e/features/step_definitions/**/*.ts"
+		]
+	}
+}

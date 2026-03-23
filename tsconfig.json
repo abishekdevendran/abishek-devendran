@@ -9,7 +9,8 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"moduleResolution": "bundler"
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true // Just to satisfy ts imports in Cucumber, as this isn't handled via Vite's module resolution
 	}
 	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
 	//
