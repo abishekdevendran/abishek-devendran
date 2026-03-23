@@ -196,7 +196,7 @@
 			<span class="sr-only">Share</span>
 		</Button>
 		<div class="w-px h-4 bg-border"></div>
-		<Button class="rounded-full w-10 h-10 p-0" variant="ghost" href="#comments">
+		<Button class="rounded-full w-10 h-10 p-0" variant="ghost" href="#comments-section">
 			<MessagesSquare class="h-4 w-4" />
 			<span class="sr-only">Comments</span>
 		</Button>

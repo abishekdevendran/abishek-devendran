@@ -1,0 +1,14 @@
+// tests/e2e/features/step_definitions/home.steps.ts
+import { Given, Then } from '@cucumber/cucumber';
+import { CustomWorld } from '../support/setup.ts';
+
+Given('I open the local dev server', async function (this: CustomWorld) {
+	await this.pages.homePage.navigate();
+});
+
+Then(
+	'the page title should contain {string}',
+	async function (this: CustomWorld, expectedTitle: string) {
+		await this.pages.homePage.verifyTitleContains(expectedTitle);
+	}
+);
