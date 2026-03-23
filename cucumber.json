@@ -8,6 +8,7 @@
 			"tsx/esm",
 			"tests/e2e/features/support/**/*.ts",
 			"tests/e2e/features/step_definitions/**/*.ts"
-		]
+		],
+		"format": ["progress", "html:test-results/cucumber-report.html"]
 	}
 }
